@@ -8,3 +8,5 @@ public enum Role {
     ROLE_LIBRARIAN,
     ROLE_ADMIN_LIBRARIAN;
 }
+
+
