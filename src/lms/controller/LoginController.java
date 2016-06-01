@@ -33,8 +33,6 @@ public class LoginController {
     @FXML
 	private void btnLoginClick() throws Exception {
 
-		System.out.print("Reached to click handler");
-//		try {
 			if (thisUserName.getText().length() > 0
 					&& thisPassword.getText().length() > 0) {
 
@@ -73,10 +71,5 @@ public class LoginController {
 			} else {
 				loginMessage.setText("Please enter Username/Password");
 			}
-
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
     }
 }
