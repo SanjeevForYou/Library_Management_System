@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 /**
  * Created by 985176 on 5/31/2016.
  */
+
+
 public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -16,7 +18,7 @@ public class Main extends Application{
         primaryStage.setTitle("Library Management System");
         Scene scene = new Scene(root, 300, 275);
         primaryStage.setScene(scene);
-        scene.getStylesheets().add(getClass().getResource("css/Login.css").toExternalForm());
+      //  scene.getStylesheets().add(getClass().getResource("css/Login.css").toExternalForm());
         primaryStage.show();
     }
     

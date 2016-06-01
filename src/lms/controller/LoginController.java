@@ -1,5 +1,4 @@
 package lms.controller;
-
 import java.io.IOException;
 
 import javafx.fxml.FXML;
@@ -7,9 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lms.util.Auth;
 import lms.util.DataAccess;
 
 /**
@@ -17,41 +19,47 @@ import lms.util.DataAccess;
  */
 public class LoginController {
     @FXML
-    Text thisUserName;
+	TextField thisUserName;
 
     @FXML
     PasswordField thisPassword;
     
     @FXML
     Text loginMessage;
+
+	@FXML
+	GridPane rootLayout;
     
     @FXML
-	private void btnLoginClick() {
-		try {
+	private void btnLoginClick() throws Exception {
+
+		System.out.print("Reached to click handler");
+//		try {
 			if (thisUserName.getText().length() > 0
 					&& thisPassword.getText().length() > 0) {
 
-				lms.util.Auth auth = DataAccess.login(
+				Auth auth = DataAccess.login(
 						thisUserName.getText(), thisPassword.getText());
-				
-				String menuUrl;
+
+				String menuUrl ="";
 				if (auth != null) {
+
 					switch (auth.getRole()) {
 					case ROLE_ADMIN_LIBRARIAN:
-						menuUrl = "adminLibrarian.fxml";
+						menuUrl = "../view/dashboard/adminLibrarian.fxml";
 						break;
 					case ROLE_ADMINISTRATOR:
-						menuUrl = "administrator.fxml";
+						menuUrl = "../view/dashboard/administrator.fxml";
 						break;
-						
+
 					case ROLE_LIBRARIAN:
-						menuUrl = "librarian.fxml";
+						menuUrl = "../view/dashboard/librarian.fxml";
 						break;
 					default:
 						menuUrl = "member.fxml";
 					}
-					Stage st = new Stage();
-					Parent root = FXMLLoader.load(getClass().getResource("../lms.view/Login.fxml"));
+                  Stage st = (Stage) rootLayout.getScene().getWindow();    // Load root layout from fxml file.
+					Parent root = FXMLLoader.load(getClass().getResource(menuUrl));
 					Scene scene = new Scene(root, 1000.0, 575.0);
 					st.setScene(scene);
 					st.setX(150);
@@ -66,9 +74,9 @@ public class LoginController {
 				loginMessage.setText("Please enter Username/Password");
 			}
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
     }
 }
