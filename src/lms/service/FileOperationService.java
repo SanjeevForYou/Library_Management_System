@@ -72,7 +72,11 @@ public class FileOperationService {
                 if (value != null) {
                     jsonObject.put(field.getName(), value);
                 }
-            };
+                recurse = false;
+                getJsonObjectRecursively(object,jsonObject,recurse);
+            }else{
+
+            }
         }
         return jsonObject;
     }
