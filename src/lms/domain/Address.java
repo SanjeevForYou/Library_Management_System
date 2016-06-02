@@ -8,4 +8,11 @@ public class Address {
     private String city;
     private String zip;
     private String state;
+
+    public Address(String street,String city,String zip,String state){
+        this.street = street;
+        this.city = city;
+        this.zip = zip;
+        this.state = state;
+    }
 }
