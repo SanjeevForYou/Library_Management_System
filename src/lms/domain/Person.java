@@ -17,6 +17,11 @@ public class Person {
     private String status;
     private String email;
 
+    public Person(String f, String l, String t, Address a)
+    {
+
+    }
+
     public Person(String fname, String lname, LocalDate dob, Gender gender, Address address, LocalDate joinDate, String status, String email) {
         this.fname = fname;
         this.lname = lname;

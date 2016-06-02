@@ -30,12 +30,13 @@ public class AdministratorController implements Initializable {
     }
 
     // Helper Methods
-    public void loadSearchMembersView() {
+    private void loadSearchMembersView() {
+
+        System.out.println("Reached to loadSearchMembersView");
         try {
             anchorPane.getChildren().clear();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass()
-                    .getResource("../view/member/searchMembers.fxml"));
+            loader.setLocation(getClass().getResource("../../../lms/view/member/searchMember.fxml"));
             AnchorPane checkoutBook = loader.load();
             anchorPane.getChildren().add(checkoutBook);
             anchorPane.setLayoutX(0);
@@ -48,16 +49,47 @@ public class AdministratorController implements Initializable {
 
     @FXML
     protected void addBookCopyClick() {
+        loadAddBookCopyView();
+    }
 
+    private void loadAddBookCopyView() {
+        System.out.println("Reached to loadAddBookCopyView");
+        try {
+            anchorPane.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../../../lms/view/book/addBookCopies.fxml"));
+            AnchorPane checkoutBook = (AnchorPane) loader.load();
+            anchorPane.getChildren().add(checkoutBook);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void addBookClick() {
+        loadAddBookView();
+    }
 
+    private void loadAddBookView() {
+        System.out.println("Reached to loadAddBookView");
+       // System.out.println(System.getProperty("user.dir")+"/src/lms/view/book/addBook.fxml");
+        System.out.print(anchorPane.toString());
+        try {
+            anchorPane.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../../../lms/view/book/addBook.fxml"));
+
+            AnchorPane checkoutBook = (AnchorPane) loader.load();
+            anchorPane.getChildren().add(checkoutBook);
+            anchorPane.setLayoutX(0);
+            anchorPane.setLayoutY(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Utility.loadSearchMembersView(anchorPane);
+      //  loadSearchMembersView();
     }
 }

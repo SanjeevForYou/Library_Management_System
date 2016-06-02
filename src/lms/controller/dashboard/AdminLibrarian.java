@@ -1,43 +1,42 @@
 package lms.controller.dashboard;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * Created by Rajiv on 6/1/2016.
  */
-public class AdminLibrarian implements Initializable {
+public class AdminLibrarian extends AdministratorController {
 
     @FXML
-    protected void addEditMemberClick() {
+    private void searchByISBNClick() {
     }
 
     @FXML
-    protected void addBookCopyClick() {
-
+    private void checkoutBookClick() {
     }
 
     @FXML
-    protected void addBookClick() {
-
+    private void showMemberRecordClick() {
     }
 
-    @FXML
-    protected void checkoutBookClick() {
-
-    }
-
-    @FXML
-    protected void searchByISBNClick() {
-
-    }
-
-    @FXML
-    protected void showMemberRecordClick() {
-
+    public void loadSearchByISBNView(AnchorPane anchorPane) {
+        try {
+            anchorPane.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/checkout/"
+                    + "searchBookCheckoutRecordEntries.fxml"));
+            AnchorPane checkoutBook = (AnchorPane) loader.load();
+            anchorPane.getChildren().add(checkoutBook);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

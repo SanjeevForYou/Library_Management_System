@@ -13,9 +13,7 @@
 <?import javafx.scene.Node?>
 <?import javafx.scene.control.Label?>
 
-<BorderPane fx:id="rootLayout" prefHeight="800" prefWidth="1000"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="lms.controller.dashboard.AdministratorController">
+<BorderPane fx:id="rootLayout" prefHeight="800" prefWidth="1000" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lms.controller.dashboard.AdministratorController">
 	<top>
 		<HBox alignment="CENTER" prefHeight="50.0">
 			<children>

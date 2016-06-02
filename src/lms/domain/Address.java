@@ -1,18 +1,37 @@
 package lms.domain;
 
-/**
- * Created by 985176 on 6/1/2016.
- */
-public class Address {
-    private String street;
-    private String city;
-    private String zip;
-    private String state;
+import java.io.Serializable;
 
-    public Address(String street,String city,String zip,String state){
-        this.street = street;
-        this.city = city;
-        this.zip = zip;
-        this.state = state;
-    }
+/* Immutable */
+final public class Address implements Serializable {
+	
+	private static final long serialVersionUID = -891229800414574888L;
+	private String street;
+	private String city;
+	private String state;
+	private String zip;
+	public Address(String street, String city, String state, String zip) {
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+	}
+	
+	public String getStreet() {
+		return street;
+	}
+	public String getCity() {
+		return city;
+	}
+	public String getState() {
+		return state;
+	}
+	public String getZip() {
+		return zip;
+	}
+	@Override
+	public String toString() {
+		return "(" + street + ", " + city + ", " + zip + ")";
+		
+	}
 }
