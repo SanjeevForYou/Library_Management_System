@@ -11,6 +11,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,6 +102,30 @@ public class FileOperationService {
             objectList.add(gson.fromJson(jsonArray.get(i).toString(), object.getClass()));
         }
         return objectList;
+    }
+
+    public List<Object> searchByFields(String filePath,Object object,Map<String,String> searchParams) throws ClassNotFoundException, IllegalAccessException {
+        List<Object> objectList = searchObjectsFromFile(filePath,object);
+        List<Object> finalObjectList = new ArrayList<>();
+        String name = "";
+        String searchedValue = "";
+        Boolean addThis = false;
+        Field[] fields = object.getClass().getDeclaredFields();
+        for(Object obj : objectList){
+            for(Field f : fields){
+                f.setAccessible(true);
+                Object value = f.get(obj);
+                name = f.getName();
+                searchedValue = searchParams.get(name);
+                if(searchedValue==null) continue;
+                if(value.toString().contains(searchedValue)){
+                    addThis = true;
+                    break;
+                }
+            }
+            if(addThis) finalObjectList.add(obj);
+        }
+        return finalObjectList;
     }
 }
 
