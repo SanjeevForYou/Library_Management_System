@@ -27,4 +27,8 @@ public class Person {
         this.status = status;
         this.email = email;
     }
+
+    public Person() {
+
+    }
 }
